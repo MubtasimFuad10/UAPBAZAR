@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="40.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label text="Hi, User Name">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="0.0" style="-fx-background-color: #fff;" visible="false" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" style="-fx-background-color: #4891FF #4891FF; -fx-background-radius: 8;" text="Cart" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
+               </padding>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="40.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <effect>
+            <DropShadow height="0.0" offsetY="1.0" radius="0.0" width="0.0">
+               <color>
+                  <Color opacity="0.10000000149011612" />
+               </color>
+            </DropShadow>
+         </effect>
+      </HBox>
+      <VBox maxWidth="400.0" spacing="20.0">
+         <children>
+            <HBox maxWidth="400.0" prefHeight="38.0">
+               <children>
+                  <TextField maxWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Search" style="-fx-background-radius: 8; -fx-background-color: #F1F1F1;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="16.0" right="16.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: #4891FF; -fx-background-radius: 8;" text="Search" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="16.0" right="16.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="Categorys">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox maxHeight="1.7976931348623157E308" spacing="10.0">
+               <children>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" style="-fx-border-color: #b4b4b4; -fx-background-color: #fff; -fx-border-radius: 8;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="All Items" />
+                              <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" style="-fx-border-color: #b4b4b4; -fx-background-color: #fff; -fx-border-radius: 8;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Clothing Items" />
+                              <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="58.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" style="-fx-border-color: #b4b4b4; -fx-background-color: #fff; -fx-border-radius: 8;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Electronics Items" />
+                              <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
