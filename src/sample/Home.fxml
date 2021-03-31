@@ -11,8 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" style="-fx-background-color: #fff;">
          <children>
@@ -88,6 +87,22 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Label text="All Items" />
+                              <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="106.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" style="-fx-border-color: #b4b4b4; -fx-background-color: #fff; -fx-border-radius: 8;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Food Items" />
                               <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
