@@ -1,6 +1,5 @@
 package sample;
 
-import ClassWorks.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,14 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SceneSwitcher {
-    private static Map<ClassWorks.View, Parent> cache = new HashMap<>();
+    private static Map<View, Parent> cache = new HashMap<>();
 
     private static Scene scene;
 
 
     public static void setScene(Scene scene) {
 
-        ClassWorks.SceneSwitcher.scene = scene;
+        sample.SceneSwitcher.scene = scene;
     }
     public static void switchTo(View view) {
         if (scene == null) {
@@ -36,7 +35,7 @@ public class SceneSwitcher {
                 System.out.println("Loading from FXML");
 
                 root = FXMLLoader.load(
-                        ClassWorks.SceneSwitcher.class.getResource(view.getFileName())
+                        sample.SceneSwitcher.class.getResource(view.getFileName())
                 );
 
                 cache.put(view,root);
