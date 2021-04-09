@@ -23,7 +23,7 @@
                </font>
             </Label>
             <Separator prefHeight="0.0" style="-fx-background-color: #fff;" visible="false" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: white; -fx-background-radius: 8;" textAlignment="CENTER" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToCart" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: white; -fx-background-radius: 8;" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -8,20 +8,20 @@ public class HomeController {
     public void switchToFood()
     {
         System.out.println("Clicked.\n");
-        System.out.println(View.Food.getFileName());
+        System.out.println(View.Home.getFileName());
         SceneSwitcher.switchTo(View.Food);
 
     }
     public void switchToClothing()
     {
         System.out.println("Clicked.\n");
-        System.out.println(View.Clothing.getFileName());
+        System.out.println(View.Home.getFileName());
         SceneSwitcher.switchTo(View.Clothing);
     }
     public void switchToElectronic()
     {
         System.out.println("Clicked.\n");
-        System.out.println(View.Electronic.getFileName());
+        System.out.println(View.Home.getFileName());
         SceneSwitcher.switchTo(View.Electronic);
     }
 
@@ -29,6 +29,6 @@ public class HomeController {
     {
         System.out.println("Clicked.\n");
         System.out.println(View.Home.getFileName());
-        SceneSwitcher.switchTo(View.);
+        SceneSwitcher.switchTo(View.Cart);
     }
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="604.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
    <children>
       <Label text="Log In" textAlignment="CENTER">
          <font>
@@ -65,6 +65,20 @@
             <Button mnemonicParsing="false" onAction="#switchToSignUp" style="-fx-background-color: #fff;" text="Sign Up" textFill="#4891ff">
                <font>
                   <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="23.0" prefWidth="398.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="146.0" text=" Admin Login">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#switchToAdminPanel" prefHeight="28.0" prefWidth="138.0" style="-fx-background-color: white;" text="LogIn As Admin" textFill="#4891ff">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Button>
          </children>

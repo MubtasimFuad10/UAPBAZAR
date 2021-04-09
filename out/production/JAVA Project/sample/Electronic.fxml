@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ItemsController">
    <children>
       <Label layoutX="-1.0" layoutY="-1.0" prefHeight="29.0" prefWidth="470.0" text="UAP BAZAAR" textFill="#050352">
          <font>
@@ -84,6 +84,14 @@
       <Button layoutX="56.0" layoutY="481.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #02B8FF;" text="Buy Now">
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button layoutX="20.0" layoutY="533.0" mnemonicParsing="false" onAction="#backToHomeElectronic" prefHeight="26.0" prefWidth="53.0" text="Back">
+         <font>
+            <Font name="Segoe UI Bold" size="12.0" />
          </font>
          <effect>
             <InnerShadow />
