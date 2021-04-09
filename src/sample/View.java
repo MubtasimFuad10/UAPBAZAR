@@ -1,8 +1,13 @@
 package sample;
 
 public enum View {
+    Login("Login.fxml"),
+    SignUp("SignUp.fxml"),
     Home("Home.fxml"),
-    Login("Login.fxml");
+    Food("Food.fxml"),
+    Clothing("Clothing.fxml"),
+    Electronic("Electronic.fxml"),
+    Cart("Cart.fxml");
 
     public final String label;
     View(String label) {

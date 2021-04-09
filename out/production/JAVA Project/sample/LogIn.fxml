@@ -62,7 +62,7 @@
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fff;" text="Sign Up" textFill="#4891ff">
+            <Button mnemonicParsing="false" onAction="#switchToSignUp" style="-fx-background-color: #fff;" text="Sign Up" textFill="#4891ff">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
    <children>
       <Label text="Sign Up" textAlignment="CENTER">
          <font>
@@ -69,7 +69,7 @@
             <Insets bottom="20.0" />
          </VBox.margin>
       </PasswordField>
-      <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: #4891FF; -fx-background-radius: 8;" text="Sign Up" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+      <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#backToLogIn" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: #4891FF; -fx-background-radius: 8;" text="Sign Up" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
          <font>
             <Font name="Segoe UI Bold" size="14.0" />
          </font>
@@ -87,7 +87,7 @@
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fff;" text="Log in" textFill="#4891ff">
+            <Button mnemonicParsing="false" onAction="#goToLogIn" style="-fx-background-color: #fff;" text="Log in" textFill="#4891ff">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
