@@ -8,13 +8,13 @@ public class ItemsController {
             System.out.println(View.Food.getFileName());
             SceneSwitcher.switchTo(View.Home);
         }
-    public void backToHomeCloth() //Fooditems to home
+    public void backToHomeCloth() //Clothings to home
     {
         System.out.println("Clicked.\n");
         System.out.println(View.Clothing.getFileName());
         SceneSwitcher.switchTo(View.Home);
     }
-    public void backToHomeElectronic() //Fooditems to home
+    public void backToHomeElectronic() //Electronics to home
     {
         System.out.println("Clicked.\n");
         System.out.println(View.Electronic.getFileName());
