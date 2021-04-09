@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
    <children>
       <Label layoutX="-1.0" layoutY="-1.0" prefHeight="29.0" prefWidth="470.0" text="UAP BAZAAR" textFill="#050352">
          <font>
@@ -23,7 +23,7 @@
          </font>
       </Label>
       <Separator layoutY="1.0" prefHeight="60.0" prefWidth="470.0" />
-      <Label layoutX="1.0" layoutY="31.0" prefHeight="29.0" prefWidth="470.0" text="User Name" textFill="#20a4d3">
+      <Label layoutX="1.0" layoutY="31.0" prefHeight="37.0" prefWidth="470.0" text="                                                           User Name" textFill="#20a4d3">
          <font>
             <Font name="Segoe UI Bold" size="12.0" />
          </font>
@@ -85,6 +85,14 @@
             <InnerShadow />
          </effect>
       </TableView>
+      <Button layoutX="21.0" layoutY="489.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="30.0" prefWidth="50.0" text="Back">
+         <font>
+            <Font name="Segoe UI Bold" size="12.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
    </children>
    <effect>
       <DropShadow />

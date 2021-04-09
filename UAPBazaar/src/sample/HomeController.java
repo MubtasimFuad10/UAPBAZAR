@@ -31,4 +31,10 @@ public class HomeController {
         System.out.println(View.Home.getFileName());
         SceneSwitcher.switchTo(View.Cart);
     }
+    public void backToHome()
+    {
+        System.out.println("Clicked.\n");
+        System.out.println(View.Cart.getFileName());
+        SceneSwitcher.switchTo(View.Home);
+    }
 }
