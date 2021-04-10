@@ -13,6 +13,7 @@ public class Main extends Application {
     }
 
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -26,8 +27,24 @@ public class Main extends Application {
             window.setTitle("UAP Bazaar");
             window.show();
 
-
+            login("admin@test.com", "1234");
     }
 
+    public static void login(String email, String pass){
+         String userEmail = "user@test.com";
+         String adminEmail = "admin@test.com";
+         String password = "1234";
+
+        if(email.equals(userEmail) && pass.equals(password)){
+            // normal user
+            System.out.println("Normal User");
+        }else if(email.equals(adminEmail) && pass.equals(password)){
+            // admin user
+            System.out.println("Admin User");
+        }else{
+            // user not found
+            System.out.println("User Not Found");
+        }
+    }
 
 }
