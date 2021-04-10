@@ -45,53 +45,30 @@ public class HomeController {
         SceneSwitcher.switchTo(View.Login);
     }
 
+    public static void main(String[] args) {
+    }
 
     public ListView<String> listView;
-    public ListView<String> foodItems;
-    public ListView<String> electronicsItems;
-    public ListView<String> clothingItems;
 
-    public HomeController(){
-        listView = new ListView<String>();
-        foodItems = new ListView<String>();
-        electronicsItems = new ListView<String>();
-        clothingItems = new ListView<String>();
-        this.foodItems.getItems().add("Food Item 1");
-        this.foodItems.getItems().add("Food Item 2");
-        this.foodItems.getItems().add("Food Item 3");
-        this.foodItems.getItems().add("Food Item 4");
-
-        electronicsItems.getItems().add("Electronics Item 1");
-        electronicsItems.getItems().add("Electronics Item 2");
-        electronicsItems.getItems().add("Electronics Item 3");
-        electronicsItems.getItems().add("Electronics Item 4");
-
-        clothingItems.getItems().add("Clothing Item 1");
-        clothingItems.getItems().add("Clothing Item 2");
-        clothingItems.getItems().add("Clothing Item 3");
-        clothingItems.getItems().add("Clothing Item 4");
-
-
+    public void showFoodItems(){
+        this.listView.getItems().clear();
+        this.listView.getItems().add("Food Item 1");
+        this.listView.getItems().add("Food Item 2");
+        this.listView.getItems().add("Food Item 3");
+        this.listView.getItems().add("Food Item 4");
+    }
+    public void showElectronicsItems(){
+        this.listView.getItems().clear();
+        listView.getItems().add("Electronics Item 1");
+        listView.getItems().add("Electronics Item 2");
+        listView.getItems().add("Electronics Item 3");
+        listView.getItems().add("Electronics Item 4");
+    }
+    public  void showClothingItems(){
+        this.listView.getItems().clear();
         listView.getItems().add("Clothing Item 1");
         listView.getItems().add("Clothing Item 2");
         listView.getItems().add("Clothing Item 3");
         listView.getItems().add("Clothing Item 4");
-    }
-
-    public static void main(String[] args) {
-
-    }
-
-    public void showFoodItems(){
-//        this.listView = foodItems;
-        System.out.println("Food Items");
-    }
-    public void showElectronicsItems(){
-//        this.listView = electronicsItems;
-        System.out.println("Electronics Items");
-    }
-    public  void showClothingItems(){
-//        this.listView = clothingItems;
-        System.out.println("Clothing Items");
     }
 }

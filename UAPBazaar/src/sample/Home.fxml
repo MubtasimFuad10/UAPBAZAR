@@ -72,6 +72,6 @@
       </VBox>
    </left>
    <center>
-      <ListView fx:id="listView" onEditStart="#showFoodItems" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listView" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
