@@ -4,7 +4,6 @@ public enum View {
     Login("Login.fxml"),
     SignUp("SignUp.fxml"),
 
-    AdminPanel("AdminPanel.fxml"),
     Admin("Admin.fxml"),
 
     Home("Home.fxml"),

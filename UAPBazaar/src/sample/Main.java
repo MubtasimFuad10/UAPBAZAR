@@ -24,7 +24,7 @@ public class Main extends Application {
             window.setTitle("UAP Bazaar");
             window.show();
 
-            login("user@test.com", "1234");
+           // login("user@test.com", "1234");
     }
 
     public static void login(String email, String pass){

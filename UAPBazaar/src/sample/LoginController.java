@@ -36,19 +36,19 @@ public class LoginController {
     }
 
 
-    //LogIn for Admin
-    public void switchToAdminPanel() //Login as Admin
-    {
-        System.out.println("Clicked.\n");
-        System.out.println(View.Login.getFileName());
-        SceneSwitcher.switchTo(View.AdminPanel);
-    }
-    public void switchToAdmin() //AdminLists
-    {
-        System.out.println("Clicked.\n");
-        System.out.println(View.AdminPanel.getFileName());
-        SceneSwitcher.switchTo(View.Admin);
-    }
+//    //LogIn for Admin
+//    public void switchToAdminPanel() //Login as Admin
+//    {
+//        System.out.println("Clicked.\n");
+//        System.out.println(View.Login.getFileName());
+//        SceneSwitcher.switchTo(View.AdminPanel);
+//    }
+//    public void switchToAdmin() //AdminLists
+//    {
+//        System.out.println("Clicked.\n");
+//        System.out.println(View.AdminPanel.getFileName());
+//        SceneSwitcher.switchTo(View.Admin);
+//    }
 
     public void onEmailChange(Object event){
         System.out.println(event);
