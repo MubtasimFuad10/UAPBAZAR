@@ -1,9 +1,12 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class LoginController {
     public Button loginButton;
+
     public void switchToHome()
     {
         System.out.println("Clicked.\n");
@@ -47,4 +50,25 @@ public class LoginController {
         SceneSwitcher.switchTo(View.Admin);
     }
 
+    public void onEmailChange(Object event){
+        System.out.println(event);
+    }
+
+    public TextField userField;
+    public TextField passField;
+    public Button logButton;
+
+    public void handle(ActionEvent event) {
+        String username = userField.getText();
+        String passw = passField.getText();
+        System.out.printf("Logged in as %s %s", username, passw);
+        switchToHome();
+    }
+
+    public TextField email;
+    public TextField password;
+
+    public void LogIn(){
+        Main.login(email.getText(), password.getText());
+    }
 }

@@ -11,9 +11,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -27,7 +24,7 @@ public class Main extends Application {
             window.setTitle("UAP Bazaar");
             window.show();
 
-            login("admin@test.com", "1234");
+            login("user@test.com", "1234");
     }
 
     public static void login(String email, String pass){
@@ -38,9 +35,11 @@ public class Main extends Application {
         if(email.equals(userEmail) && pass.equals(password)){
             // normal user
             System.out.println("Normal User");
+            SceneSwitcher.switchTo(View.Home);
         }else if(email.equals(adminEmail) && pass.equals(password)){
             // admin user
             System.out.println("Admin User");
+            SceneSwitcher.switchTo(View.Admin);
         }else{
             // user not found
             System.out.println("User Not Found");
