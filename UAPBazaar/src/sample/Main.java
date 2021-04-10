@@ -17,18 +17,16 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
             Stage window= primaryStage;
-            setUserAgentStylesheet(STYLESHEET_MODENA);
+            setUserAgentStylesheet(STYLESHEET_CASPIAN);
             Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
 
-            Scene beginScene=new Scene(root);
-            SceneSwitcher.setScene(beginScene);
-            window.setScene(beginScene);
+            Scene scene=new Scene(root);
+            SceneSwitcher.setScene(scene);
+            window.setScene(scene);
+            window.setTitle("UAP Bazaar");
             window.show();
 
-        //Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
-//        primaryStage.setTitle("UAP Bazaar");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
+
     }
 
 

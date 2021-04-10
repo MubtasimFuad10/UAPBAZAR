@@ -89,7 +89,7 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button layoutX="14.0" layoutY="529.0" mnemonicParsing="false" onAction="#backToHomeElectronic" prefHeight="30.0" prefWidth="46.0" text="Back">
+      <Button layoutX="14.0" layoutY="529.0" mnemonicParsing="false" onAction="#backToHomeElectronic" prefHeight="30.0" prefWidth="53.0" text="Back">
          <font>
             <Font name="Segoe UI Bold" size="12.0" />
          </font>
