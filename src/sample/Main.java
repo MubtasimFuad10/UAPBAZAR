@@ -23,7 +23,7 @@ public class Main extends Application {
 
         Scene scene=new Scene(root);
         SceneSwitcher.setScene(scene);
-        window.setScene(scene); ////asdfsadfk
+        window.setScene(scene);
         window.setTitle("UAP Bazaar");
         window.show();
 
