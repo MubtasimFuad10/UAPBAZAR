@@ -26,7 +26,7 @@ public class Main extends Application {
         window.setScene(scene);
         window.setTitle("UAP Bazaar");
         window.show();
-        login("user@test.com", "1234");
+      login("user@test.com", "1234");
     }
 
     public static void login(String email, String pass){
@@ -47,5 +47,7 @@ public class Main extends Application {
             System.out.println("User Not Found");
         }
     }
+
+
 
 }
