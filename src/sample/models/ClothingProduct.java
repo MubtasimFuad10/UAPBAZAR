@@ -34,14 +34,17 @@ public class ClothingProduct extends Product{
     }
 
     public Size getSize() {
+
         return size;
     }
 
     public void setSize(Size size) {
+
         this.size = size;
     }
 
     public String getSubCategoryName(){
+
         return this.subCategory.name();
     }
 }

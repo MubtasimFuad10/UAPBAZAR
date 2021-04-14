@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.CartController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.CartController">
    <top>
       <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="48.0" spacing="10.0" style="-fx-background-color: f1f1f1;" BorderPane.alignment="CENTER">
          <padding>
@@ -27,9 +27,18 @@
                </font>
             </Label>
             <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-            <Button fx:id="homeButton" mnemonicParsing="false" text="Home" />
-            <Button fx:id="clearCartButton" mnemonicParsing="false" text="Clear Cart" />
-            <Button fx:id="logOutButton" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="homeButton" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="clearCartButton" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Clear Cart" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="logOutButton" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
          </children>
       </HBox>
    </top>
@@ -79,10 +88,13 @@
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <Button fx:id="removeItemButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove from Cart">
+                        <Button fx:id="removeItemButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #f53333;" text="Remove from Cart" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
                         </Button>
                      </children>
                   </VBox>
@@ -102,10 +114,13 @@
                      </VBox.margin>
                   </Label>
                   <ListView fx:id="overviewListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                  <Button fx:id="buyNowButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Buy Now" VBox.vgrow="ALWAYS">
+                  <Button fx:id="buyNowButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #02B8FF;" text="Buy Now" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                     </font>
                   </Button>
                </children>
                <padding>

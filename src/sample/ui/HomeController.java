@@ -85,6 +85,7 @@ public class HomeController {
                 updateTotalPrice();
             }
         });
+
         decrease.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event)
@@ -96,6 +97,7 @@ public class HomeController {
                 updateTotalPrice();
             }
         });
+
         addToCart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -104,6 +106,7 @@ public class HomeController {
                 updateTotalPrice();
             }
         });
+
         viewCart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -114,6 +117,7 @@ public class HomeController {
                 }
             }
         });
+
         logOut.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -124,6 +128,7 @@ public class HomeController {
                 }
             }
         });
+
         productTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null){
                 loadDetailsView(newSelection);

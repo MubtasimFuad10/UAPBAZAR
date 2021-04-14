@@ -8,12 +8,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.HomeController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.HomeController">
    <top>
       <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="48.0" spacing="10.0" style="-fx-background-color: f1f1f1;" BorderPane.alignment="CENTER">
          <padding>
@@ -27,10 +29,24 @@
             </Label>
             <Separator layoutX="266.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
             <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Search by name, category or id" />
-            <Button fx:id="searchButton" mnemonicParsing="false" text="Search" />
+            <Button fx:id="searchButton" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
             <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-            <Button fx:id="viewCart" mnemonicParsing="false" text="View Cart" />
-            <Button fx:id="logOut" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" text="Log Out" />
+            <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/Cart.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="viewCart" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="View Cart" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="logOut" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
          </children>
       </HBox>
    </top>
@@ -48,7 +64,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ListView fx:id="detailsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+            <ListView fx:id="detailsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
             <VBox maxHeight="-Infinity" spacing="10.0">
                <children>
                   <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0">
@@ -75,9 +91,15 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Button fx:id="addToCart" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add to Cart" />
+                        <Button fx:id="addToCart" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: F94309;" text="Add to Cart">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font></Button>
                         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="buyNow" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Buy Now" />
+                        <Button fx:id="buyNow" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #02B8FF;" text="Buy Now">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                </children>

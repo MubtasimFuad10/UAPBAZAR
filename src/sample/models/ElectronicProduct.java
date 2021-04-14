@@ -8,7 +8,7 @@ public class ElectronicProduct extends Product{
         Blender,
         Mobile,
         Laptop,
-        Other,
+        Others,
     }
 
     SubCategory subCategory;
@@ -19,6 +19,7 @@ public class ElectronicProduct extends Product{
     }
 
     String getSubCategoryName(){
+
         return this.subCategory.name();
     }
 

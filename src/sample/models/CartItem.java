@@ -13,6 +13,7 @@ public class CartItem extends Product {
     }
 
     public int getQuantity() {
+
         return quantity;
     }
 
@@ -32,6 +33,7 @@ public class CartItem extends Product {
     }
 
     void updateTotalPrice(){
+
         this.totalPrice = this.product.getPrice() * this.quantity;
     }
 
@@ -41,6 +43,7 @@ public class CartItem extends Product {
     }
 
     public Product getProduct() {
+
         return product;
     }
 }
