@@ -1,53 +1,42 @@
 package sample;
 
-import javafx.scene.control.ListView;
-import sample.SceneSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import sample.models.ClothingProduct;
+import sample.models.FoodProduct;
+
+import java.util.Date;
+import java.util.Objects;
+
 public class Main extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-
-    }
+    public static  Store store;
+    public static Cart cart;
+    public static  Auth auth;
+    public static ScreenController screenController;
     @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        Stage window= primaryStage;
-        setUserAgentStylesheet(STYLESHEET_CASPIAN);
-        Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
-
-        Scene scene=new Scene(root);
-        SceneSwitcher.setScene(scene);
-        window.setScene(scene);
-        window.setTitle("UAP Bazaar");
-        window.show();
-      login("user@test.com", "1234");
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/login.fxml")));
+        Scene scene = new Scene(root);
+        screenController = new ScreenController(scene);
+        screenController.addScreen("login", "ui/login.fxml");
+        screenController.addScreen("home", "ui/home.fxml");
+        screenController.addScreen("cart", "ui/cart.fxml");
+        primaryStage.setTitle("UAP Store");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
+    public static void main(String[] args) {
+        store = new Store();
+        cart = new Cart();
+        auth = new Auth();
 
-    public static void login(String email, String pass){
-        String userEmail = "user@test.com";
-        String adminEmail = "admin@test.com";
-        String password = "1234";
-
-        if(email.equals(userEmail) && pass.equals(password)){
-            // normal user
-            System.out.println("Normal User");
-            SceneSwitcher.switchTo(View.Home);
-        }else if(email.equals(adminEmail) && pass.equals(password)){
-            // admin user
-            System.out.println("Admin User");
-            SceneSwitcher.switchTo(View.Admin);
-        }else{
-            // user not found
-            System.out.println("User Not Found");
-        }
+        store.addClothingProduct("Men's Pant", 499.0, ClothingProduct.SubCategory.Pant);
+        store.addClothingProduct("Women's Pant", 999.0, ClothingProduct.SubCategory.Pant);
+        store.addFoodProduct("Kacchi", 149.0, new Date(), FoodProduct.SubCategory.Meal);
+        launch(args);
     }
-
-
-
 }
