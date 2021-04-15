@@ -56,7 +56,7 @@ public class CartController {
     @FXML
     private  ListView<String> overviewListView;
     @FXML
-    private Button buyNowButton;
+    private Button buyNowButton = new Button();
 
     CartItem selectedCartItem;
     ObservableList detailsList = FXCollections.observableArrayList();
@@ -64,6 +64,7 @@ public class CartController {
     ObservableList<CartItem> cartList;
 
     @FXML
+    //Initialize
     void initialize() {
         loadCart();
         loadOverViewList();
@@ -120,11 +121,13 @@ public class CartController {
                 loadOverViewList();
             }
         });
+
         cartListTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 loadDetailsView(newSelection);
             }
         });
+
         logOutButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -145,6 +148,18 @@ public class CartController {
                 }
             }
         });
+
+
+//        buyNowButton.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                    Alert dialogBox=new Alert(Alert.AlertType.INFORMATION, "Bill Paid");
+//                    dialogBox.showAndWait();
+//
+//
+//            }
+//        });
+
     }
 
     void loadCart(){
@@ -157,6 +172,7 @@ public class CartController {
         productTotalPrice.setCellValueFactory(new PropertyValueFactory<CartItem, Double>("totalPrice"));
         cartListTable.setItems(this.cartList);
     }
+
 
     void loadDetailsView(CartItem cartItem){
         this.selectedCartItem = cartItem;
@@ -203,4 +219,8 @@ public class CartController {
         overviewListView.getItems().clear();
         overviewListView.getItems().addAll(overviewList);
     }
+//    public static void showBillPaid(String msg)
+//    {
+//        Alert dialogBox = new Alert(Alert.AlertType.INFORMATION, "Bill paid "+buyNowButton+ )
+//    }
 }

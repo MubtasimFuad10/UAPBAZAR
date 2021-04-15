@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import sample.models.ClothingProduct;
+import sample.models.ElectronicProduct;
 import sample.models.FoodProduct;
 
 import java.util.Date;
@@ -19,11 +20,11 @@ public class Main extends Application {
     public static ScreenController screenController;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/home.fxml")));
         Scene scene = new Scene(root);
         screenController = new ScreenController(scene);
         screenController.addScreen("login", "ui/login.fxml");
-        screenController.addScreen("Admin", "ui/Admin.fxml"); //admin
+        screenController.addScreen("admin", "ui/admin.fxml"); //admin
         screenController.addScreen("home", "ui/home.fxml");
         screenController.addScreen("cart", "ui/cart.fxml");
         primaryStage.setTitle("UAP Bazaar");
@@ -38,6 +39,7 @@ public class Main extends Application {
         store.addClothingProduct("Men's Pant", 499.0, ClothingProduct.SubCategory.Pant);
         store.addClothingProduct("Women's Pant", 999.0, ClothingProduct.SubCategory.Pant);
         store.addFoodProduct("Kacchi", 149.0, new Date(), FoodProduct.SubCategory.Meal);
+        store.addElectronicProduct("PC", 80000.0, ElectronicProduct.SubCategory.Computer);
         launch(args);
     }
 }

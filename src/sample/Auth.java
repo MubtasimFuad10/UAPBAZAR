@@ -14,7 +14,7 @@ public class Auth {
         }else if(email.equals("admin@email.com") && password.equals("1234")){
             isAdminUser = true;
             isLoggedIn = true;
-            Main.screenController.activate("Admin");
+            Main.screenController.activate("admin");
         }else{
             System.out.println("Invalid password or email");
         }
