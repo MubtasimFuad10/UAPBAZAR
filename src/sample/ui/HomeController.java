@@ -26,9 +26,9 @@ public class HomeController {
     @FXML
     private ListView<String> tabsListView;
     @FXML
-    private Button viewCart = new Button();
+    private Button viewCart ;
     @FXML
-    private Button logOut = new Button();
+    private Button logOut ;
     @FXML
     private TextField searchTextField;
     @FXML
@@ -164,6 +164,7 @@ public class HomeController {
         });
         tabsListView.getSelectionModel().selectFirst();
     }
+
     String getLabel(String name){
         return name ;
     }
@@ -196,6 +197,7 @@ public class HomeController {
             }
         });
     }
+
     private void showAllItems(){
         this.productList = FXCollections.observableArrayList(Main.store.getProducts());
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
@@ -204,14 +206,17 @@ public class HomeController {
         productPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
         productTable.setItems(this.productList);
     }
+
     private void showFoodItems(){
         this.productList = FXCollections.observableArrayList(Main.store.getAllFoodProducts());
         productTable.setItems(this.productList);
     }
+
     private void showElectronicItems(){
         this.productList = FXCollections.observableArrayList(Main.store.getAllElectronicProducts());
         productTable.setItems(this.productList);
     }
+
     private void showClothingItems(){
         this.productList = FXCollections.observableArrayList(Main.store.getAllClothingProducts());
         productTable.setItems(this.productList);
@@ -221,11 +226,13 @@ public class HomeController {
         this.productList = FXCollections.observableArrayList(products);
         productTable.setItems(this.productList);
     }
+
     void loadDetailsView(Product product){
         if(selectedProduct == null || product != selectedProduct){
             this.quantity = 1;
             selectedProduct = product;
         }
+
         updateTotalPrice();
         detailsList.removeAll(detailsList);
         detailsList.add("Id: " + product.getId());
@@ -252,6 +259,7 @@ public class HomeController {
         detailsListView.getItems().addAll(detailsList);
         detailsMenu.setVisible(true);
     }
+
     void updateTotalPrice(){
         quantityField.setText(quantity + "");
         totalPrice.setText((selectedProduct.getPrice() * quantity) + " Tk");

@@ -12,4 +12,7 @@ public class LogInController {
     public void logIn() throws Exception {
         Main.auth.logIn(emailField.getText(), passwordField.getText());
     }
+//    public void AdminLogin() throws  Exception{
+//        Main.auth.logIn(emailField.getText(), passwordField.getText());
+//    }
 }

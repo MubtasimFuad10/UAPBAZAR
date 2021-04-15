@@ -6,7 +6,7 @@ import sample.models.Product;
 import java.util.ArrayList;
 
 public class Cart {
-    ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+    ArrayList<CartItem> cartItems = new ArrayList<>();
     Double totalPrice;
 
     public Cart(){

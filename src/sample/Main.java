@@ -23,6 +23,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         screenController = new ScreenController(scene);
         screenController.addScreen("login", "ui/login.fxml");
+        screenController.addScreen("Admin", "ui/Admin.fxml"); //admin
         screenController.addScreen("home", "ui/home.fxml");
         screenController.addScreen("cart", "ui/cart.fxml");
         primaryStage.setTitle("UAP Bazaar");
