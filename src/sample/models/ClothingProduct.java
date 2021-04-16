@@ -1,6 +1,6 @@
 package sample.models;
 
-public class ClothingProduct extends Product{
+public class ClothingProduct extends Product {
     public enum SubCategory {
         Casual,
         Sports,
@@ -10,6 +10,7 @@ public class ClothingProduct extends Product{
         Shirt,
         Other,
     }
+
     public enum Size {
         S,
         M,
@@ -17,10 +18,11 @@ public class ClothingProduct extends Product{
         XL,
         XXL,
     }
+
     SubCategory subCategory;
     Size size;
 
-    public ClothingProduct(String name, Double price, SubCategory subCategory, int quantity, Double salePrice){
+    public ClothingProduct(String name, Double price, SubCategory subCategory, int quantity, Double salePrice) {
         super(name, Category.Clothing, price, quantity, salePrice);
         this.subCategory = subCategory;
     }
@@ -43,7 +45,7 @@ public class ClothingProduct extends Product{
         this.size = size;
     }
 
-    public String getSubCategoryName(){
+    public String getSubCategoryName() {
 
         return this.subCategory.name();
     }

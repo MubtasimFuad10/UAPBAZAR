@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -14,11 +15,11 @@ public class ScreenController {
         this.main = main;
     }
 
-    public void addScreen(String name, String fxml){
+    public void addScreen(String name, String fxml) {
         screenMap.put(name, fxml);
     }
 
-    public void removeScreen(String name){
+    public void removeScreen(String name) {
         screenMap.remove(name);
     }
 

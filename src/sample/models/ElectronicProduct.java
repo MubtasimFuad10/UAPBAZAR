@@ -1,6 +1,6 @@
 package sample.models;
 
-public class ElectronicProduct extends Product{
+public class ElectronicProduct extends Product {
     public enum SubCategory {
         Computer,
         Refrigerator,
@@ -13,12 +13,12 @@ public class ElectronicProduct extends Product{
 
     SubCategory subCategory;
 
-    public ElectronicProduct(String name, Double price, SubCategory subCategory, int quantity, Double salePrice){
-        super(name, Category.Electronic, price, quantity,salePrice);
+    public ElectronicProduct(String name, Double price, SubCategory subCategory, int quantity, Double salePrice) {
+        super(name, Category.Electronic, price, quantity, salePrice);
         this.subCategory = subCategory;
     }
 
-    String getSubCategoryName(){
+    String getSubCategoryName() {
 
         return this.subCategory.name();
     }

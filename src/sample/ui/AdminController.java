@@ -139,53 +139,52 @@ public class AdminController {
 //        });
     }
 
-    void initializeTabs(){
+    void initializeTabs() {
         tabItems.removeAll(tabItems);
-        for(int i = 0; i< Category.values().length; i++){
+        for (int i = 0; i < Category.values().length; i++) {
             tabItems.add(getLabel(Category.values()[i].name()));
         }
         tabsListView.getItems().clear();
         tabsListView.getItems().addAll(tabItems);
         tabsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null && !newSelection.equals(oldSelection)){
-                if(newSelection.equals(getLabel(Category.All.name()))){
+            if (newSelection != null && !newSelection.equals(oldSelection)) {
+                if (newSelection.equals(getLabel(Category.All.name()))) {
                     showAllItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Food.name()))){
+                } else if (newSelection.equals(getLabel(Category.Food.name()))) {
                     showFoodItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Electronic.name()))){
+                } else if (newSelection.equals(getLabel(Category.Electronic.name()))) {
                     showElectronicItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Clothing.name()))){
+                } else if (newSelection.equals(getLabel(Category.Clothing.name()))) {
                     showClothingItems();
                 }
             }
         });
         tabsListView.getSelectionModel().selectFirst();
     }
-    String getLabel(String name){
-        return name ;
+
+    String getLabel(String name) {
+        return name;
     }
-    void handleSearch(){
+
+    void handleSearch() {
         searchTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 tabsListView.getSelectionModel().selectFirst();
-                if(t1.isEmpty() || t1.isBlank()){
+                if (t1.isEmpty() || t1.isBlank()) {
                     showAllItems();
-                }else{
+                } else {
                     ArrayList<Product> searchProducts = new ArrayList<>();
-                    for(Product product: Main.store.getProducts()){
-                        if(product.getName().toLowerCase().contains(t1.toLowerCase())){
+                    for (Product product : Main.store.getProducts()) {
+                        if (product.getName().toLowerCase().contains(t1.toLowerCase())) {
                             searchProducts.add(product);
                             continue;
                         }
-                        if(product.getCategory().name().toLowerCase().contains(t1.toLowerCase())){
+                        if (product.getCategory().name().toLowerCase().contains(t1.toLowerCase())) {
                             searchProducts.add(product);
                             continue;
                         }
-                        if(product.getId().contains(t1)){
+                        if (product.getId().contains(t1)) {
                             searchProducts.add(product);
                             continue;
                         }
@@ -195,7 +194,8 @@ public class AdminController {
             }
         });
     }
-    private void showAllItems(){
+
+    private void showAllItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getProducts());
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         productId.setCellValueFactory(new PropertyValueFactory<Product, String>("id"));
@@ -205,20 +205,23 @@ public class AdminController {
         salePrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
         productTable.setItems(this.productList);
     }
-    private void showFoodItems(){
+
+    private void showFoodItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllFoodProducts());
         productTable.setItems(this.productList);
     }
-    private void showElectronicItems(){
+
+    private void showElectronicItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllElectronicProducts());
         productTable.setItems(this.productList);
     }
-    private void showClothingItems(){
+
+    private void showClothingItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllClothingProducts());
         productTable.setItems(this.productList);
     }
 
-    private void showSearchItems(ArrayList<Product> products){
+    private void showSearchItems(ArrayList<Product> products) {
         this.productList = FXCollections.observableArrayList(products);
         productTable.setItems(this.productList);
     }

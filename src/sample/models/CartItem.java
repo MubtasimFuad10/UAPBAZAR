@@ -5,7 +5,7 @@ public class CartItem extends Product {
     int quantity;
     double totalPrice;
 
-    public CartItem(Product product, int quantity){
+    public CartItem(Product product, int quantity) {
         super(product.name, product.category, product.price, product.quantity, product.salePrice);
         this.product = product;
         this.quantity = quantity;
@@ -22,17 +22,17 @@ public class CartItem extends Product {
         updateTotalPrice();
     }
 
-    public void increaseQuantity(int increaseBy){
+    public void increaseQuantity(int increaseBy) {
         this.quantity += increaseBy;
         updateTotalPrice();
     }
 
-    public void decreaseQuantity(int decreaseBy){
+    public void decreaseQuantity(int decreaseBy) {
         this.quantity -= decreaseBy;
         updateTotalPrice();
     }
 
-    void updateTotalPrice(){
+    void updateTotalPrice() {
 
         this.totalPrice = this.product.getPrice() * this.quantity;
     }
