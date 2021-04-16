@@ -21,18 +21,18 @@ public class Store {
         this.products.add(product);
     }
 
-    public void addFoodProduct(String name, Double price, Date expirationDate, FoodProduct.SubCategory subCategory){
-        FoodProduct foodProduct = new FoodProduct(name, price, expirationDate, subCategory);
+    public void addFoodProduct(String name, Double price, Date expirationDate, FoodProduct.SubCategory subCategory, int quantity, Double salePrice){
+        FoodProduct foodProduct = new FoodProduct(name, price, expirationDate, subCategory,quantity, salePrice);
         this.products.add(foodProduct);
     }
 
-    public void addElectronicProduct(String name, Double price, ElectronicProduct.SubCategory subCategory){
-        ElectronicProduct electronicProduct = new ElectronicProduct(name, price, subCategory);
+    public void addElectronicProduct(String name, Double price, ElectronicProduct.SubCategory subCategory,int quantity, Double salePrice){
+        ElectronicProduct electronicProduct = new ElectronicProduct(name, price, subCategory,quantity, salePrice);
         this.products.add(electronicProduct);
     }
 
-    public void addClothingProduct(String name, Double price, ClothingProduct.SubCategory subCategory){
-        ClothingProduct clothingProduct = new ClothingProduct(name, price, subCategory);
+    public void addClothingProduct(String name, Double price, ClothingProduct.SubCategory subCategory,int quantity, Double salePrice){
+        ClothingProduct clothingProduct = new ClothingProduct(name, price, subCategory,quantity, salePrice);
         this.products.add(clothingProduct);
     }
 

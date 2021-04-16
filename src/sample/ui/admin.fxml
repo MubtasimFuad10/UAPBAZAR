@@ -35,14 +35,14 @@
                 <Separator layoutX="266.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
                 <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Search by name, category or id" />
                 <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                <Button fx:id="viewHome" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Home" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="12.0" />
-               </font></Button>
+                <Button fx:id="viewHome" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                    </font></Button>
                 <Button fx:id="logOut" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Log Out" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="12.0" />
-               </font></Button>
+                    <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                    </font></Button>
             </children>
         </HBox>
         <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -71,8 +71,7 @@
                                                     <children>
                                                         <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0">
                                                             <children>
-                                                                <Label text="Total Price:" />
-                                                                <Label fx:id="totalPrice" layoutX="10.0" layoutY="10.0" text="100">
+                                                                <Label fx:id="totalPrice" layoutX="10.0" layoutY="10.0" text="100" textFill="WHITE">
                                                                     <font>
                                                                         <Font size="14.0" />
                                                                     </font>
@@ -81,21 +80,26 @@
                                                         </HBox>
                                                         <HBox spacing="10.0">
                                                             <children>
-                                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Quantity" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="decrease" mnemonicParsing="false" text="-" />
-                                                                <TextField fx:id="quantityField" alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="56.0" HBox.hgrow="NEVER">
+                                                                <Button fx:id="decrease" mnemonicParsing="false" style="-fx-background-color: white;" text="-" textFill="WHITE" />
+                                                                <TextField fx:id="quantityField" alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="56.0" style="-fx-background-color: white;" HBox.hgrow="NEVER">
                                                                     <font>
                                                                         <Font size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <Button fx:id="increase" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="+" />
+                                                                <Button fx:id="increase" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white;" text="+" textFill="WHITE" />
                                                             </children>
                                                         </HBox>
                                                         <HBox alignment="CENTER_LEFT">
                                                             <children>
-                                                                <Button fx:id="addToCart" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add to Cart" />
+                                                                <Button fx:id="addToCart" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: white;" text="Add to Cart" textFill="WHITE">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Bold" size="12.0" />
+                                                                    </font></Button>
                                                                 <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                                                                <Button fx:id="buyNow" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Buy Now" />
+                                                                <Button fx:id="buyNow" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: white;" text="Buy Now" textFill="WHITE">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Bold" size="12.0" />
+                                                                    </font></Button>
                                                             </children>
                                                         </HBox>
                                                     </children>

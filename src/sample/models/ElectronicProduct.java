@@ -13,8 +13,8 @@ public class ElectronicProduct extends Product{
 
     SubCategory subCategory;
 
-    public ElectronicProduct(String name, Double price, SubCategory subCategory){
-        super(name, Category.Electronic, price);
+    public ElectronicProduct(String name, Double price, SubCategory subCategory, int quantity, Double salePrice){
+        super(name, Category.Electronic, price, quantity,salePrice);
         this.subCategory = subCategory;
     }
 

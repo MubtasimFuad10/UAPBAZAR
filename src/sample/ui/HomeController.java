@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+
 import sample.Main;
 import sample.enums.Category;
 import sample.models.ClothingProduct;
@@ -19,7 +20,7 @@ import sample.models.Product;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class HomeController {
@@ -68,12 +69,15 @@ public class HomeController {
     ObservableList<Product> productList;
 
     @FXML
-    void initialize() {
+    public void initialize() {
         initializeTabs();
         handleSearch();
         detailsMenu.setVisible(false);
         decrease.setDisable(true);
         quantityField.setDisable(true);
+
+        //Updating the Quantity of the Product
+
         increase.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event)
@@ -109,7 +113,7 @@ public class HomeController {
 
         addToCart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(ActionEvent event) {
                 Main.cart.addCartItem(selectedProduct, quantity);
                 quantity = 1;
                 updateTotalPrice();
@@ -155,6 +159,7 @@ public class HomeController {
         }
         tabsListView.getItems().clear();
         tabsListView.getItems().addAll(tabItems);
+
         tabsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null && !newSelection.equals(oldSelection)){
                 if(newSelection.equals(getLabel(Category.All.name()))){
@@ -206,6 +211,7 @@ public class HomeController {
             }
         });
     }
+
 
     private void showAllItems(){
         productList = FXCollections.observableArrayList(Main.store.getProducts());
@@ -273,4 +279,5 @@ public class HomeController {
         quantityField.setText(quantity + "");
         totalPrice.setText((selectedProduct.getPrice() * quantity) + " Tk");
     }
+
 }
