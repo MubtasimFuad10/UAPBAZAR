@@ -9,13 +9,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import sample.Main;
 import sample.enums.Category;
 import sample.models.*;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -23,14 +21,11 @@ public class AdminController {
     @FXML
     private ListView<String> tabsListView;
     @FXML
-    private Button viewHome = new Button();
+    private Button viewHome;
     @FXML
-    private Button logOut = new Button();
+    private Button logOut;
     @FXML
-
     private TextField searchTextField;
-    @FXML
-    private Button searchButton;
     @FXML
     private TableView<Product> productTable;
     @FXML
@@ -44,71 +39,24 @@ public class AdminController {
     @FXML
     private TableColumn<Product, Integer> productQuantity;
     @FXML
-    private TableColumn<Product, Double> salePrice;
+    private TableColumn<Product, Double> productSalePrice;
     @FXML
-    private VBox detailsMenu;
-    @FXML
-    private Label totalPrice;
-    @FXML
-    private TextField quantityField;
-    @FXML
-    private Button increase;
-    @FXML
-    private Button decrease;
-    @FXML
-    private Button addToCart;
-    @FXML
-    private Button buyNow;
-    @FXML
-    private ListView<String> detailsListView;
+    private TableColumn<Product, Integer> productDiscount;
 
-    //int quantity = 1;
-    Product selectedProduct;
+    @FXML
+    private  TabPane tabPane;
+    @FXML
+    public Tab productsTab;
+    @FXML
+    public Tab addProductTab;
 
     ObservableList tabItems = FXCollections.observableArrayList();
-    ObservableList detailsList = FXCollections.observableArrayList();
     ObservableList<Product> productList;
 
     @FXML
     void initialize() {
         initializeTabs();
         handleSearch();
-        detailsMenu.setVisible(false);
-        //decrease.setDisable(true);
-        //quantityField.setDisable(true);
-//        increase.setOnAction(new EventHandler<ActionEvent>(){
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//                if(quantity > 0){
-//                    decrease.setDisable(false);
-//                }
-//                quantity++;
-//                updateTotalPrice();
-//            }
-//        });
-//        decrease.setOnAction(new EventHandler<ActionEvent>(){
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//                if(quantity - 2  <= 0){
-//                    decrease.setDisable(true);
-//                }
-//                quantity--;
-//                updateTotalPrice();
-//            }
-//        });
-
-//        addToCart.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                Main.cart.addCartItem(selectedProduct, quantity);
-//                quantity = 1;
-//                updateTotalPrice();
-//            }
-//        });
-
-        //From Admin to Home
         viewHome.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -129,14 +77,20 @@ public class AdminController {
                 }
             }
         });
-//        productTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-//            if (newSelection != null){
-//                loadDetailsView(newSelection);
-//            }else{
-//                detailsMenu.setVisible(false);
-//                selectedProduct = null;
-//            }
-//        });
+
+        tabPane.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<Tab>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+                        initializeTabs();
+                    }
+                }
+        );
+    }
+
+    void changeTab(Tab tab){
+        SingleSelectionModel<Tab> tabs = tabPane.getSelectionModel();
+        tabs.select(tab);
     }
 
     void initializeTabs() {
@@ -202,7 +156,8 @@ public class AdminController {
         productCategory.setCellValueFactory(new PropertyValueFactory<Product, Product.Category>("category"));
         productPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
         productQuantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
-        salePrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
+        productSalePrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
+        productDiscount.setCellValueFactory(new PropertyValueFactory<Product, Integer>("percentage"));
         productTable.setItems(this.productList);
     }
 
@@ -225,39 +180,4 @@ public class AdminController {
         this.productList = FXCollections.observableArrayList(products);
         productTable.setItems(this.productList);
     }
-//    void loadDetailsView(Product product){
-//        if(selectedProduct == null || product != selectedProduct){
-//            this.quantity = 1;
-//            selectedProduct = product;
-//        }
-//        updateTotalPrice();
-//        detailsList.removeAll(detailsList);
-//        detailsList.add("Id: " + product.getId());
-//        detailsList.add("Name: " + product.getName());
-//        detailsList.add("Category: " + product.getCategory());
-//        if(product.getCategory() == Product.Category.Food){
-//            FoodProduct foodProduct = (FoodProduct) product;
-//            String pattern = "dd MMM yyyy";
-//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-//            String date = simpleDateFormat.format(foodProduct.getExpirationDate());
-//            detailsList.add("Sub Category: " + foodProduct.getSubCategory());
-//            detailsList.add("Expiration Date: "+ date);
-//        }
-//        if(product.getCategory() == Product.Category.Electronic){
-//            ElectronicProduct electronicProduct = (ElectronicProduct)product;
-//            detailsList.add("Sub Category: " + electronicProduct.getSubCategory().name());
-//        }
-//        if(product.getCategory() == Product.Category.Clothing){
-//            ClothingProduct clothingProduct = (ClothingProduct) product;
-//            detailsList.add("Sub Category: " + clothingProduct.getSubCategory().name());
-//        }
-//        detailsList.add("Price: " + product.getPrice() + " Tk");
-//        detailsListView.getItems().clear();
-//        detailsListView.getItems().addAll(detailsList);
-//        detailsMenu.setVisible(true);
-//    }
-//    void updateTotalPrice(){
-//        quantityField.setText(quantity + "");
-//        totalPrice.setText((selectedProduct.getPrice() * quantity) + " Tk");
-//    }
 }

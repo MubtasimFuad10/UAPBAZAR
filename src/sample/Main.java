@@ -1,9 +1,12 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import sample.models.ClothingProduct;
@@ -13,7 +16,7 @@ import sample.models.FoodProduct;
 import java.util.Date;
 import java.util.Objects;
 
-public class Main extends Application {
+public class Main extends Application   {
     public static Store store;
     public static Cart cart;
     public static Auth auth;
@@ -38,10 +41,18 @@ public class Main extends Application {
         cart = new Cart();
         auth = new Auth();
 
-        store.addClothingProduct("Men's Pant", 499.0, ClothingProduct.SubCategory.Pant, 50, 449.0);
-        store.addClothingProduct("Women's Pant", 999.0, ClothingProduct.SubCategory.Pant, 50, 949.0);
-        store.addFoodProduct("Kacchi", 149.0, new Date(), FoodProduct.SubCategory.Meal, 10, 130.0);
-        store.addElectronicProduct("PC", 80000.0, ElectronicProduct.SubCategory.Computer, 80, 75000.0);
-        launch(args);
+//        store.addClothingProduct("Men's Pant", 500.0, ClothingProduct.SubCategory.Pant, 50, 450.0, 10);
+//        store.addClothingProduct("Women's Pant", 1000.0, ClothingProduct.SubCategory.Pant, 50, 900.0,10);
+//        store.addFoodProduct("Kacchi", 150.0, new Date(), FoodProduct.SubCategory.Meal, 10, 135.0,10);
+//        store.addElectronicProduct("PC", 80000.0, ElectronicProduct.SubCategory.Computer, 80, 72000.0,10);
+//        store.addClothingProduct("Mask", 120.0, ClothingProduct.SubCategory.Mask, 50, 108.0,10);
+      launch(args);
     }
+
+
+
+
+
+
+
 }

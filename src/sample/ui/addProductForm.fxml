@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="form" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.AddProductForm">
+    <children>
+        <GridPane alignment="CENTER_LEFT" hgap="10.0" maxHeight="-Infinity" maxWidth="400.0" vgap="10.0" VBox.vgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="productName" GridPane.columnIndex="1" GridPane.vgrow="ALWAYS" />
+                <Label text="Name" />
+                <Label text="Price" GridPane.rowIndex="1" />
+                <Label text="Quantity" GridPane.rowIndex="4" />
+                <TextField fx:id="productPrice" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="productQuantity" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ComboBox fx:id="productCategory" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+                <Label text="Category" GridPane.rowIndex="5" />
+                <Label layoutX="84.0" layoutY="49.0" text="Discount" GridPane.rowIndex="2" />
+                <TextField fx:id="productDiscount" layoutX="120.0" layoutY="45.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label layoutX="63.0" layoutY="84.0" text="Sale Price" GridPane.rowIndex="3" />
+                <TextField fx:id="productSalePrice" layoutX="120.0" layoutY="80.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            </children>
+        </GridPane>
+        <StackPane alignment="TOP_CENTER">
+            <children>
+                <GridPane fx:id="fpGroup" alignment="CENTER_LEFT" hgap="10.0" maxHeight="-Infinity" maxWidth="400.0" vgap="10.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Expiration Date" />
+                        <ComboBox fx:id="fpCategory" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                        <Label text="Sub Category" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="fpExpirationDate" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+                <GridPane fx:id="epGroup" alignment="CENTER_LEFT" hgap="10.0" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="400.0" vgap="10.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <ComboBox fx:id="epCategory" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <Label text="Sub Category" />
+                    </children>
+                </GridPane>
+                <GridPane fx:id="cpGroup" alignment="CENTER_LEFT" hgap="10.0" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="400.0" vgap="10.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <ComboBox fx:id="cpCategory" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <Label text="Sub Category" />
+                    </children>
+                </GridPane>
+            </children>
+        </StackPane>
+        <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308">
+            <children>
+                <Button fx:id="addProductButton" mnemonicParsing="false" text="Add Product" />
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>

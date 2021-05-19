@@ -1,5 +1,6 @@
 package sample.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class FoodProduct extends Product {
@@ -12,16 +13,16 @@ public class FoodProduct extends Product {
         Other
     }
 
-    Date expirationDate;
+    LocalDate expirationDate;
     SubCategory subCategory;
 
-    public FoodProduct(String name, Double price, Date expirationDate, SubCategory subCategory, int quantity, Double salePrice) {
-        super(name, Category.Food, price, quantity, salePrice);
+    public FoodProduct(String name, Double price, LocalDate expirationDate, SubCategory subCategory, int quantity, int percentage){
+        super(name, Category.Food, price, quantity, percentage);
         this.expirationDate = expirationDate;
         this.subCategory = subCategory;
     }
 
-    String getSubCategoryName() {
+    String getSubCategoryName(){
         return this.subCategory.name();
     }
 
@@ -33,11 +34,11 @@ public class FoodProduct extends Product {
         this.subCategory = subCategory;
     }
 
-    public Date getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
 }

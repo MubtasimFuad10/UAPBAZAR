@@ -17,6 +17,7 @@ import sample.models.FoodProduct;
 import sample.models.Product;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 
@@ -43,8 +44,6 @@ public class CartController {
     @FXML
     private TableView<CartItem> cartListTable;
     @FXML
-    private Label totalPrice;
-    @FXML
     private TableColumn<CartItem, String> productId;
     @FXML
     private TableColumn<CartItem, String> productName;
@@ -57,9 +56,9 @@ public class CartController {
     @FXML
     private TableColumn<CartItem, Double> productPrice;
     @FXML
-    private ListView<String> overviewListView;
+    private  ListView<String> overviewListView;
     @FXML
-    private Button buyNowButton = new Button();
+    private Button buyNowButton;
 
     CartItem selectedCartItem;
     ObservableList detailsList = FXCollections.observableArrayList();
@@ -67,16 +66,16 @@ public class CartController {
     ObservableList<CartItem> cartList;
 
     @FXML
-        //Initialize
     void initialize() {
         loadCart();
         loadOverViewList();
         detailsMenu.setVisible(false);
-        increaseButton.setOnAction(new EventHandler<ActionEvent>() {
+        increaseButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override
-            public void handle(ActionEvent event) {
-                if (selectedCartItem != null) {
-                    if (selectedCartItem.getQuantity() > 0) {
+            public void handle(ActionEvent event)
+            {
+                if(selectedCartItem != null){
+                    if(selectedCartItem.getQuantity() > 0){
                         decreaseButton.setDisable(false);
                     }
                     selectedCartItem.setQuantity(selectedCartItem.getQuantity() + 1);
@@ -86,11 +85,12 @@ public class CartController {
                 }
             }
         });
-        decreaseButton.setOnAction(new EventHandler<ActionEvent>() {
+        decreaseButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override
-            public void handle(ActionEvent event) {
-                if (selectedCartItem != null) {
-                    if (selectedCartItem.getQuantity() - 2 <= 0) {
+            public void handle(ActionEvent event)
+            {
+                if(selectedCartItem != null){
+                    if(selectedCartItem.getQuantity() - 2  <= 0){
                         decreaseButton.setDisable(true);
                     }
                     selectedCartItem.setQuantity(selectedCartItem.getQuantity() - 1);
@@ -103,7 +103,7 @@ public class CartController {
         removeItemButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (selectedCartItem != null) {
+                if(selectedCartItem != null){
                     Main.cart.removeCartItem(selectedCartItem.getProduct().getId());
                     loadCart();
                     detailsMenu.setVisible(false);
@@ -122,13 +122,11 @@ public class CartController {
                 loadOverViewList();
             }
         });
-
         cartListTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 loadDetailsView(newSelection);
             }
         });
-
         logOutButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -150,7 +148,6 @@ public class CartController {
             }
         });
 
-
         buyNowButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -168,69 +165,62 @@ public class CartController {
                 }
             }
         });
-
     }
 
-
-    void loadCart() {
+    void loadCart(){
         cartList = FXCollections.observableArrayList(Main.cart.getCartItems());
         productId.setCellValueFactory(new PropertyValueFactory<CartItem, String>("id"));
         productName.setCellValueFactory(new PropertyValueFactory<CartItem, String>("name"));
         productCategory.setCellValueFactory(new PropertyValueFactory<CartItem, Product.Category>("category"));
         productQuantity.setCellValueFactory(new PropertyValueFactory<CartItem, Integer>("quantity"));
-        productPrice.setCellValueFactory(new PropertyValueFactory<CartItem, Double>("price"));
+        productPrice.setCellValueFactory(new PropertyValueFactory<CartItem, Double>("salePrice"));
         productTotalPrice.setCellValueFactory(new PropertyValueFactory<CartItem, Double>("totalPrice"));
         cartListTable.setItems(this.cartList);
     }
 
-
-    void loadDetailsView(CartItem cartItem) {
+    void loadDetailsView(CartItem cartItem){
         this.selectedCartItem = cartItem;
         updateTotalPrice();
         detailsList.removeAll(detailsList);
         detailsList.add("Id: " + cartItem.getProduct().getId());
         detailsList.add("Name: " + cartItem.getProduct().getName());
         detailsList.add("Category: " + cartItem.getProduct().getCategory());
-        if (cartItem.getProduct().getCategory() == Product.Category.Food) {
+        if(cartItem.getProduct().getCategory() == Product.Category.Food){
             FoodProduct foodProduct = (FoodProduct) cartItem.getProduct();
             String pattern = "dd MMM yyyy";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(foodProduct.getExpirationDate());
             detailsList.add("Sub Category: " + foodProduct.getSubCategory());
-            detailsList.add("Expiration Date: " + date);
+            detailsList.add("Expiration Date: "+ date);
         }
-        if (cartItem.getCategory() == Product.Category.Electronic) {
-            ElectronicProduct electronicProduct = (ElectronicProduct) cartItem.getProduct();
+        if(cartItem.getCategory() == Product.Category.Electronic){
+            ElectronicProduct electronicProduct = (ElectronicProduct)cartItem.getProduct();
             detailsList.add("Sub Category: " + electronicProduct.getSubCategory().name());
         }
-        if (cartItem.getCategory() == Product.Category.Clothing) {
+        if(cartItem.getCategory() == Product.Category.Clothing){
             ClothingProduct clothingProduct = (ClothingProduct) cartItem.getProduct();
             detailsList.add("Sub Category: " + clothingProduct.getSubCategory().name());
         }
-        detailsList.add("price: " + cartItem.getProduct().getPrice() + " Tk");
+        detailsList.add("price: " + new DecimalFormat("#.00 TK").format(cartItem.getProduct().getSalePrice()));
         detailsList.add("Quantity: " + cartItem.getQuantity());
-        detailsList.add("Total Price: " + cartItem.getTotalPrice() + " Tk");
+        detailsList.add("Total Price: " + new DecimalFormat("#.00 TK").format(Main.cart.getTotalPrice()));
 
         detailsListView.getItems().clear();
         detailsListView.getItems().addAll(detailsList);
         detailsMenu.setVisible(true);
     }
 
-    void updateTotalPrice() {
-        if (selectedCartItem != null) {
+    void updateTotalPrice(){
+        if(selectedCartItem != null){
             quantityField.setText(selectedCartItem.getQuantity() + "");
         }
     }
 
-    void loadOverViewList() {
+    void loadOverViewList(){
         overviewList.removeAll(overviewList);
         overviewList.add("Total Items: " + Main.cart.getCartItemCount().toString());
-        overviewList.add("Total Price: " + Main.cart.getTotalPrice().toString() + " Tk");
+        overviewList.add("Total Price: " + new DecimalFormat("#.00 TK").format(Main.cart.getTotalPrice()));
         overviewListView.getItems().clear();
         overviewListView.getItems().addAll(overviewList);
     }
-//    public static void showBillPaid(String msg)
-//    {
-//        Alert dialogBox = new Alert(Alert.AlertType.INFORMATION, "Bill paid "+buyNowButton+ )
-//    }
 }

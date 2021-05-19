@@ -8,22 +8,22 @@ public class Product {
         Electronic,
         Clothing,
     }
-
     String id;
     String name;
     Category category;
     Double price;
-    Double salePrice;
-    int quantity;
     boolean inStock;
+    int quantity;
+    double salePrice;
+    int percentage;
 
-    public Product(String name, Category category, Double price, int quantity, Double salePrice) {
+    public Product(String name, Category category, Double price, int quantity, int percentage){
         this.name = name;
         this.category = category;
         this.price = price;
-        this.id = (Math.random() + "").substring(2, 8);
-        this.salePrice = salePrice;
         this.quantity = quantity;
+        this.id = (Math.random() + "").substring(2, 8);
+        this.setPercentage(percentage);
     }
 
     public String getId() {
@@ -70,11 +70,16 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Double getSalePrice() {
+    public double getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(Double salePrice) {
-        this.salePrice = salePrice;
+    public int getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+        this.salePrice = price - (price * percentage) / 100;
     }
 }

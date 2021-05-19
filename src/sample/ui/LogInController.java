@@ -9,7 +9,7 @@ public class LogInController {
     public TextField emailField;
     public TextField passwordField;
 
-    public void logIn() throws Exception {
+    public void logIn() throws IOException {
         Main.auth.logIn(emailField.getText(), passwordField.getText());
     }
 }
