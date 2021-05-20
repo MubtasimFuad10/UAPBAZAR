@@ -1,6 +1,5 @@
 package sample.models;
 
-import java.util.UUID;
 
 public class Product {
     public enum Category {
@@ -8,6 +7,7 @@ public class Product {
         Electronic,
         Clothing,
     }
+
     String id;
     String name;
     Category category;
@@ -17,7 +17,7 @@ public class Product {
     double salePrice;
     int percentage;
 
-    public Product(String name, Category category, Double price, int quantity, int percentage){
+    public Product(String name, Category category, Double price, int quantity, int percentage) {
         this.name = name;
         this.category = category;
         this.price = price;

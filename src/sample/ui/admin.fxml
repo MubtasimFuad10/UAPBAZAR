@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.AdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ui.AdminController">
     <children>
         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="48.0" spacing="10.0" style="-fx-background-color: f1f1f1;">
             <padding>
@@ -32,8 +32,14 @@
                 <Separator layoutX="266.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
                 <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Search by name, category or id" />
                 <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                <Button fx:id="viewHome" mnemonicParsing="false" text="Home" />
-                <Button fx:id="logOut" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" text="Log Out" />
+                <Button fx:id="viewHome" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font></Button>
+                <Button fx:id="logOut" layoutX="720.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #4891FF;" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
             </children>
         </HBox>
         <TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">

@@ -44,7 +44,7 @@ public class AdminController {
     private TableColumn<Product, Integer> productDiscount;
 
     @FXML
-    private  TabPane tabPane;
+    private TabPane tabPane;
     @FXML
     public Tab productsTab;
     @FXML
@@ -88,7 +88,7 @@ public class AdminController {
         );
     }
 
-    void changeTab(Tab tab){
+    void changeTab(Tab tab) {
         SingleSelectionModel<Tab> tabs = tabPane.getSelectionModel();
         tabs.select(tab);
     }
@@ -160,6 +160,7 @@ public class AdminController {
         productDiscount.setCellValueFactory(new PropertyValueFactory<Product, Integer>("percentage"));
         productTable.setItems(this.productList);
     }
+
 
     private void showFoodItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllFoodProducts());

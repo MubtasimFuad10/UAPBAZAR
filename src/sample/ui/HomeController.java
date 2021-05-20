@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 
 public class HomeController {
@@ -80,35 +81,33 @@ public class HomeController {
         decrease.setDisable(true);
         quantityField.setDisable(true);
 
-        if(Main.auth.isAdminUser){
+        if (Main.auth.isAdminUser) {
             username.setText("Hi, Admin");
-        }else{
+        } else {
             username.setText("Hi, User");
         }
 
-        increase.setOnAction(new EventHandler<ActionEvent>(){
+        increase.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event)
-            {
-                if(quantity > 0){
+            public void handle(ActionEvent event) {
+                if (quantity > 0) {
                     decrease.setDisable(false);
                 }
                 quantity++;
-                if(quantity >= selectedProduct.getQuantity()){
+                if (quantity >= selectedProduct.getQuantity()) {
                     increase.setDisable(true);
                 }
                 updateTotalPrice();
             }
         });
-        decrease.setOnAction(new EventHandler<ActionEvent>(){
+        decrease.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event)
-            {
-                if(quantity - 2  <= 0){
+            public void handle(ActionEvent event) {
+                if (quantity - 2 <= 0) {
                     decrease.setDisable(true);
                 }
                 quantity--;
-                if(quantity < selectedProduct.getQuantity()){
+                if (quantity < selectedProduct.getQuantity()) {
                     increase.setDisable(false);
                 }
                 updateTotalPrice();
@@ -145,7 +144,7 @@ public class HomeController {
             }
         });
 
-        if(Main.auth.isAdminUser){
+        if (Main.auth.isAdminUser) {
             viewDashboard.setVisible(true);
             viewDashboard.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -157,67 +156,66 @@ public class HomeController {
                     }
                 }
             });
-        }else{
+        } else {
             viewDashboard.setVisible(false);
         }
 
         productTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null){
+            if (newSelection != null) {
                 loadDetailsView(newSelection);
-            }else{
+            } else {
                 detailsMenu.setVisible(false);
                 selectedProduct = null;
             }
         });
     }
 
-    void initializeTabs(){
+    void initializeTabs() {
         tabItems.removeAll(tabItems);
-        for(int i = 0; i< Category.values().length; i++){
+        for (int i = 0; i < Category.values().length; i++) {
             tabItems.add(getLabel(Category.values()[i].name()));
         }
         tabsListView.getItems().clear();
         tabsListView.getItems().addAll(tabItems);
         tabsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null && !newSelection.equals(oldSelection)){
-                if(newSelection.equals(getLabel(Category.All.name()))){
+            if (newSelection != null && !newSelection.equals(oldSelection)) {
+                if (newSelection.equals(getLabel(Category.All.name()))) {
                     showAllItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Food.name()))){
+                } else if (newSelection.equals(getLabel(Category.Food.name()))) {
                     showFoodItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Electronic.name()))){
+                } else if (newSelection.equals(getLabel(Category.Electronic.name()))) {
                     showElectronicItems();
-                }
-                else if(newSelection.equals(getLabel(Category.Clothing.name()))){
+                } else if (newSelection.equals(getLabel(Category.Clothing.name()))) {
                     showClothingItems();
                 }
             }
         });
         tabsListView.getSelectionModel().selectFirst();
     }
-    String getLabel(String name){
-        return name ;
+
+    String getLabel(String name) {
+        return name;
     }
-    void handleSearch(){
+
+    void handleSearch() {
         searchTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 tabsListView.getSelectionModel().selectFirst();
-                if(t1.isEmpty() || t1.isBlank()){
+                if (t1.isEmpty() || t1.isBlank()) {
                     showAllItems();
-                }else{
+                } else {
                     ArrayList<Product> searchProducts = new ArrayList<>();
-                    for(Product product: Main.store.getProducts()){
-                        if(product.getName().toLowerCase().contains(t1.toLowerCase())){
+                    for (Product product : Main.store.getProducts()) {
+                        if (product.getName().toLowerCase().contains(t1.toLowerCase())) {
                             searchProducts.add(product);
                             continue;
                         }
-                        if(product.getCategory().name().toLowerCase().contains(t1.toLowerCase())){
+                        if (product.getCategory().name().toLowerCase().contains(t1.toLowerCase())) {
                             searchProducts.add(product);
                             continue;
                         }
-                        if(product.getId().contains(t1)){
+                        if (product.getId().contains(t1)) {
                             searchProducts.add(product);
                             continue;
                         }
@@ -226,8 +224,11 @@ public class HomeController {
                 }
             }
         });
+
+
     }
-    private void showAllItems(){
+
+    private void showAllItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getProducts());
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         productId.setCellValueFactory(new PropertyValueFactory<Product, String>("id"));
@@ -235,27 +236,31 @@ public class HomeController {
         productPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
         productTable.setItems(this.productList);
     }
-    private void showFoodItems(){
+
+    private void showFoodItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllFoodProducts());
         productTable.setItems(this.productList);
     }
-    private void showElectronicItems(){
+
+    private void showElectronicItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllElectronicProducts());
         productTable.setItems(this.productList);
     }
-    private void showClothingItems(){
+
+    private void showClothingItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllClothingProducts());
         productTable.setItems(this.productList);
     }
 
-    private void showSearchItems(ArrayList<Product> products){
+    private void showSearchItems(ArrayList<Product> products) {
         this.productList = FXCollections.observableArrayList(products);
         productTable.setItems(this.productList);
     }
-    void loadDetailsView(Product product){
+
+    void loadDetailsView(Product product) {
         increase.setDisable(false);
         decrease.setDisable(true);
-        if(selectedProduct == null || product != selectedProduct){
+        if (selectedProduct == null || product != selectedProduct) {
             this.quantity = 1;
             selectedProduct = product;
         }
@@ -264,19 +269,17 @@ public class HomeController {
         detailsList.add("Id: " + product.getId());
         detailsList.add("Name: " + product.getName());
         detailsList.add("Category: " + product.getCategory());
-        if(product.getCategory() == Product.Category.Food){
+        if (product.getCategory() == Product.Category.Food) {
             FoodProduct foodProduct = (FoodProduct) product;
-//            String pattern = "dd MMM yyyy";
-//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-//            String date = simpleDateFormat.format();
+
             detailsList.add("Sub Category: " + foodProduct.getSubCategory());
-            detailsList.add("Expiration Date: "+ foodProduct.getExpirationDate().format(DateTimeFormatter.ISO_DATE));
+            detailsList.add("Expiration Date: " + foodProduct.getExpirationDate().format(DateTimeFormatter.ISO_DATE));
         }
-        if(product.getCategory() == Product.Category.Electronic){
-            ElectronicProduct electronicProduct = (ElectronicProduct)product;
+        if (product.getCategory() == Product.Category.Electronic) {
+            ElectronicProduct electronicProduct = (ElectronicProduct) product;
             detailsList.add("Sub Category: " + electronicProduct.getSubCategory().name());
         }
-        if(product.getCategory() == Product.Category.Clothing){
+        if (product.getCategory() == Product.Category.Clothing) {
             ClothingProduct clothingProduct = (ClothingProduct) product;
             detailsList.add("Sub Category: " + clothingProduct.getSubCategory().name());
         }
@@ -289,7 +292,7 @@ public class HomeController {
         detailsMenu.setVisible(true);
     }
 
-    void updateTotalPrice(){
+    void updateTotalPrice() {
         quantityField.setText(quantity + "");
         totalPrice.setText(new DecimalFormat("#.00 TK").format(selectedProduct.getSalePrice() * quantity));
     }

@@ -5,16 +5,17 @@ import java.io.IOException;
 public class Auth {
     public boolean isAdminUser = true;
     public boolean isLoggedIn = false;
+
     public void logIn(String email, String password) throws IOException {
-        if(email.equals("user@email.com") && password.equals("user")){
+        if (email.equals("user@email.com") && password.equals("user")) {
             isAdminUser = false;
             isLoggedIn = true;
             Main.screenController.activate("home");
-        }else if(email.equals("admin@email.com") && password.equals("admin")){
+        } else if (email.equals("admin@email.com") && password.equals("admin")) {
             isAdminUser = true;
             isLoggedIn = true;
             Main.screenController.activate("home");
-        }else{
+        } else {
             System.out.println("Invalid password or email");
         }
     }

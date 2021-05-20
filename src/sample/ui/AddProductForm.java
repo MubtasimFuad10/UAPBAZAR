@@ -76,7 +76,7 @@ public class AddProductForm {
     Product.Category pc = Product.Category.values()[0];
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         for (Product.Category value : Product.Category.values()) {
             categorys.add(value.name());
         }
@@ -96,15 +96,14 @@ public class AddProductForm {
         productCategory.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(s == null || !s.equals(t1)){
+                if (s == null || !s.equals(t1)) {
                     productCategoryChange(t1);
                 }
             }
         });
-        addProductButton.setOnAction(new EventHandler<ActionEvent>(){
+        addProductButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event)
-            {
+            public void handle(ActionEvent event) {
                 addProduct();
             }
         });
@@ -112,7 +111,7 @@ public class AddProductForm {
         productPrice.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(s == null || !s.equals(t1)){
+                if (s == null || !s.equals(t1)) {
                     updateSalePrice();
                 }
             }
@@ -120,11 +119,11 @@ public class AddProductForm {
         productDiscount.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(s == null || !s.equals(t1)){
-                    if(Integer.parseInt(t1) > 100){
+                if (s == null || !s.equals(t1)) {
+                    if (Integer.parseInt(t1) > 100) {
                         productDiscount.setText("100");
                     }
-                    if(t1.isBlank() || t1.isEmpty() || Integer.parseInt(t1) < 0){
+                    if (t1.isBlank() || t1.isEmpty() || Integer.parseInt(t1) < 0) {
                         productDiscount.setText("0");
                     }
                     updateSalePrice();
@@ -134,14 +133,14 @@ public class AddProductForm {
         updateSalePrice();
     }
 
-    void updateSalePrice(){
+    void updateSalePrice() {
         int discount = productDiscount.getText().isEmpty() ? 0 : Integer.parseInt(productDiscount.getText());
         Double price = productPrice.getText().isEmpty() ? 0.0 : Double.parseDouble(productPrice.getText());
         Double salePrice = price - (price * discount) / 100;
         productSalePrice.setText(salePrice.toString());
     }
 
-    void initValues(){
+    void initValues() {
         productSalePrice.setDisable(true);
         productName.setText("");
         pc = Product.Category.values()[0];
@@ -156,26 +155,25 @@ public class AddProductForm {
         epCategory.setValue(epCategorys.get(0));
         fpExpirationDate.setValue(LocalDate.now());
     }
-    void productCategoryChange(String name){
+
+    void productCategoryChange(String name) {
         pc = Product.Category.valueOf(name);
         fpGroup.setVisible(pc == Product.Category.Food);
         epGroup.setVisible(pc == Product.Category.Electronic);
         cpGroup.setVisible(pc == Product.Category.Clothing);
     }
 
-    void addProduct(){
+    void addProduct() {
         String name = productName.getText();
         Double price = productPrice.getText().isEmpty() ? 0.0 : Double.parseDouble(productPrice.getText());
         int quantity = productQuantity.getText().isEmpty() ? 0 : Integer.parseInt(productQuantity.getText());
         int percentage = productDiscount.getText().isEmpty() ? 0 : Integer.parseInt(productDiscount.getText());
 
-        if(pc == Product.Category.Food){
+        if (pc == Product.Category.Food) {
             Main.store.addFoodProduct(name, price, fpExpirationDate.getValue(), FoodProduct.SubCategory.valueOf(fpCategory.getValue()), quantity, percentage);
-        }
-        else if(pc == Product.Category.Electronic){
+        } else if (pc == Product.Category.Electronic) {
             Main.store.addElectronicProduct(name, price, ElectronicProduct.SubCategory.valueOf(epCategory.getValue()), quantity, percentage);
-        }
-        else if(pc == Product.Category.Clothing){
+        } else if (pc == Product.Category.Clothing) {
             Main.store.addClothingProduct(name, price, ClothingProduct.SubCategory.valueOf(cpCategory.getValue()), quantity, percentage);
         }
         initValues();
