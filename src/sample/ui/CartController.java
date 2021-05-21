@@ -61,6 +61,7 @@ public class CartController {
     @FXML
     private Button buyNowButton;
 
+
     CartItem selectedCartItem;
     ObservableList detailsList = FXCollections.observableArrayList();
     ObservableList overviewList = FXCollections.observableArrayList();
@@ -68,9 +69,14 @@ public class CartController {
 
     @FXML
     void initialize() {
+
+
         loadCart();
         loadOverViewList();
         detailsMenu.setVisible(false);
+        decreaseButton.setDisable(true);
+        quantityField.setDisable(true);
+
         increaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -78,7 +84,11 @@ public class CartController {
                     if (selectedCartItem.getQuantity() > 0) {
                         decreaseButton.setDisable(false);
                     }
-                    selectedCartItem.setQuantity(selectedCartItem.getQuantity() + 1);
+                    int quantity = selectedCartItem.getQuantity() +1 ;
+                    if (quantity >= selectedCartItem.getProduct().getQuantity()) {
+                        increaseButton.setDisable(true);
+                    }
+                    selectedCartItem.setQuantity(quantity);
                     loadDetailsView(selectedCartItem);
                     cartListTable.refresh();
                     loadOverViewList();
@@ -92,13 +102,20 @@ public class CartController {
                     if (selectedCartItem.getQuantity() - 2 <= 0) {
                         decreaseButton.setDisable(true);
                     }
-                    selectedCartItem.setQuantity(selectedCartItem.getQuantity() - 1);
+
+                    int quantity = selectedCartItem.getQuantity() - 1;
+                    if (quantity <= selectedCartItem.getProduct().getQuantity()) {
+                        increaseButton.setDisable(false);
+                    }
+                    selectedCartItem.setQuantity(quantity);
                     loadDetailsView(selectedCartItem);
                     cartListTable.refresh();
                     loadOverViewList();
                 }
             }
         });
+
+
         removeItemButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -146,25 +163,13 @@ public class CartController {
                 }
             }
         });
-
         buyNowButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Alert dialogBox = new Alert(Alert.AlertType.INFORMATION, "Bill Paid " + Main.cart.getTotalPrice() + "Tk");
-                Optional<ButtonType> result = dialogBox.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    System.out.println("Pressed Ok");
-                    Main.cart.removeAll();
-                    cartList = FXCollections.observableArrayList(Main.cart.getCartItems());
-                    cartListTable.setItems(cartList);
-                    detailsListView.setVisible(false);
-                    detailsMenu.setVisible(false);
-                    overviewListView.getItems().clear();
-
-
-                }
+                buyNow();
             }
         });
+
     }
 
     void loadCart() {
@@ -178,7 +183,23 @@ public class CartController {
         cartListTable.setItems(this.cartList);
     }
 
+    void buyNow() {
+        Alert dialogBox = new Alert(Alert.AlertType.INFORMATION, "Bill Paid " + Main.cart.getTotalPrice() + "Tk");
+        Optional<ButtonType> result = dialogBox.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            System.out.println("Pressed Ok");
+            Main.cart.buyAllItems();
+            cartList = FXCollections.observableArrayList(Main.cart.getCartItems());
+            cartListTable.setItems(cartList);
+            detailsListView.setVisible(false);
+            detailsMenu.setVisible(false);
+            overviewListView.getItems().clear();
+        }
+    }
+
     void loadDetailsView(CartItem cartItem) {
+
+
         this.selectedCartItem = cartItem;
         updateTotalPrice();
         detailsList.removeAll(detailsList);
@@ -202,10 +223,47 @@ public class CartController {
         detailsList.add("Quantity: " + cartItem.getQuantity());
         detailsList.add("Total Price: " + new DecimalFormat("#.00 TK").format(Main.cart.getTotalPrice()));
 
+
         detailsListView.getItems().clear();
         detailsListView.getItems().addAll(detailsList);
         detailsMenu.setVisible(true);
     }
+
+
+//    void loadDetailsView(Product product) {
+//        increaseButton.setDisable(false);
+//        decreaseButton.setDisable(true);
+//        if (selectedProduct == null || product != selectedProduct) {
+//            this.quantity = 1;
+//            selectedProduct = product;
+//        }
+//        updateTotalPrice();
+//        detailsList.removeAll(detailsList);
+//        detailsList.add("Id: " + product.getId());
+//        detailsList.add("Name: " + product.getName());
+//        detailsList.add("Category: " + product.getCategory());
+//        if (product.getCategory() == Product.Category.Food) {
+//            FoodProduct foodProduct = (FoodProduct) product;
+//
+//            detailsList.add("Sub Category: " + foodProduct.getSubCategory());
+//            detailsList.add("Expiration Date: " + foodProduct.getExpirationDate().format(DateTimeFormatter.ISO_DATE));
+//        }
+//        if (product.getCategory() == Product.Category.Electronic) {
+//            ElectronicProduct electronicProduct = (ElectronicProduct) product;
+//            detailsList.add("Sub Category: " + electronicProduct.getSubCategory().name());
+//        }
+//        if (product.getCategory() == Product.Category.Clothing) {
+//            ClothingProduct clothingProduct = (ClothingProduct) product;
+//            detailsList.add("Sub Category: " + clothingProduct.getSubCategory().name());
+//        }
+//        detailsList.add("Regular Price: " + new DecimalFormat("#.00 TK").format(product.getPrice()));
+//        detailsList.add("Sale Price: " + new DecimalFormat("#.00 TK").format(product.getSalePrice()) + "  (-" + product.getPercentage() + "%)");
+//        detailsList.add("Stock: " + (product.getQuantity() > 0 ? product.getQuantity() : "Out of Stock"));
+//
+//        detailsListView.getItems().clear();
+//        detailsListView.getItems().addAll(detailsList);
+//        detailsMenu.setVisible(true);
+//    }
 
     void updateTotalPrice() {
         if (selectedCartItem != null) {

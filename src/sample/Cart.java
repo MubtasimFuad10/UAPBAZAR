@@ -83,10 +83,13 @@ public class Cart {
         return totalPrice;
     }
 
-    public void viewCart() {
+    public void buyAllItems() {
         for (CartItem cartItem : cartItems) {
-            System.out.println(cartItem.getProduct().getName() + " - " + cartItem.getQuantity());
+            System.out.println(cartItem.getId());
+            Main.store.setProductQuantity(cartItem.getProduct().getId(), cartItem.getProduct().getQuantity() - cartItem.getQuantity());
         }
+        this.removeAll();
     }
+
 
 }

@@ -16,12 +16,12 @@ public class ScreenController {
     }
 
     public void addScreen(String name, String fxml) {
-        screenMap.put(name,fxml);
+        screenMap.put(name, fxml);
     }
 
-//    public void removeScreen(String name) {
-//        screenMap.remove(name);
-//    }
+    public void removeScreen(String name) {
+        screenMap.remove(name);
+    }
 
     public void activate(String name) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(screenMap.get(name)));

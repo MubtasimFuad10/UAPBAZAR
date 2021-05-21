@@ -1,6 +1,8 @@
 package sample.models;
 
 
+import java.text.DecimalFormat;
+
 public class Product {
     public enum Category {
         Food,
@@ -20,7 +22,7 @@ public class Product {
     public Product(String name, Category category, Double price, int quantity, int percentage) {
         this.name = name;
         this.category = category;
-        this.price = price;
+        this.price = Double.parseDouble(new DecimalFormat("#.00").format(price - (price * percentage) / 100));
         this.quantity = quantity;
         this.id = (Math.random() + "").substring(2, 8);
         this.setPercentage(percentage);
@@ -80,6 +82,6 @@ public class Product {
 
     public void setPercentage(int percentage) {
         this.percentage = percentage;
-        this.salePrice = price - (price * percentage) / 100;
+        this.salePrice = Double.parseDouble(new DecimalFormat("#.00").format(price - (price * percentage) / 100));
     }
 }

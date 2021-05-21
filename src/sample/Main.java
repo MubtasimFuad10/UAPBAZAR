@@ -7,8 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.stage.Stage;
+import sample.models.FoodProduct;
 
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -19,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/admin.fxml")));
         Scene scene = new Scene(root);
         screenController = new ScreenController(scene);
         screenController.addScreen("login", "ui/login.fxml");
@@ -35,7 +37,7 @@ public class Main extends Application {
         store = new Store();
         cart = new Cart();
         auth = new Auth();
-
+        store.addFoodProduct("Kacchi", 149.0, LocalDate.now(), FoodProduct.SubCategory.Meal, 10, 35);
 
         launch(args);
     }

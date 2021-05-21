@@ -15,7 +15,11 @@ public class Store {
         this.products = products;
     }
 
+    public Store(String uapBazar) {
+    }
+
     public Store() {
+
     }
 
     public void addProduct(Product product) {
@@ -49,6 +53,15 @@ public class Store {
         }
         return null;
     }
+
+    public void setProductQuantity(String id, int quantity) {
+        for (Product product : products) {
+            if (product.getId().equals(id)) {
+                product.setQuantity(quantity);
+            }
+        }
+    }
+
 
     public void removeProduct(String id) {
         this.products.remove(getProduct(id));
