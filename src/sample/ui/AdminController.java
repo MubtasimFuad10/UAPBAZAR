@@ -9,12 +9,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import sample.Main;
 import sample.enums.Category;
 import sample.models.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class AdminController {
@@ -22,6 +24,10 @@ public class AdminController {
     private ListView<String> tabsListView;
     @FXML
     private Button viewHome;
+    @FXML
+    private Button deleteItem;
+    @FXML
+    private HBox actionMenu;
     @FXML
     private Button logOut;
     @FXML
@@ -53,6 +59,8 @@ public class AdminController {
     ObservableList tabItems = FXCollections.observableArrayList();
     ObservableList<Product> productList;
 
+    Product selectedProduct;
+
     @FXML
     void initialize() {
         initializeTabs();
@@ -78,6 +86,21 @@ public class AdminController {
             }
         });
 
+        deleteItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (selectedProduct != null) {
+                    Alert dialogBox = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to delete " + selectedProduct.getName() + "?");
+                    Optional<ButtonType> result = dialogBox.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+                        Main.store.removeProduct(selectedProduct.getId());
+                        productTable.refresh();
+                        initializeTabs();
+                    }
+                }
+            }
+        });
+
         tabPane.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<Tab>() {
                     @Override
@@ -86,6 +109,16 @@ public class AdminController {
                     }
                 }
         );
+
+        productTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                selectedProduct = newSelection;
+                actionMenu.setVisible(true);
+            } else {
+                actionMenu.setVisible(false);
+                selectedProduct = null;
+            }
+        });
     }
 
     void changeTab(Tab tab) {
@@ -160,7 +193,6 @@ public class AdminController {
         productDiscount.setCellValueFactory(new PropertyValueFactory<Product, Integer>("percentage"));
         productTable.setItems(this.productList);
     }
-
 
     private void showFoodItems() {
         this.productList = FXCollections.observableArrayList(Main.store.getAllFoodProducts());

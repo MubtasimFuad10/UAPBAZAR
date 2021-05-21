@@ -15,11 +15,7 @@ public class Store {
         this.products = products;
     }
 
-    public Store(String uapBazar) {
-    }
-
     public Store() {
-
     }
 
     public void addProduct(Product product) {
@@ -31,13 +27,25 @@ public class Store {
         this.products.add(foodProduct);
     }
 
+    public void addFoodProduct(FoodProduct foodProduct) {
+        this.products.add(foodProduct);
+    }
+
     public void addElectronicProduct(String name, Double price, ElectronicProduct.SubCategory subCategory, int quantity, int percentage) {
         ElectronicProduct electronicProduct = new ElectronicProduct(name, price, subCategory, quantity, percentage);
         this.products.add(electronicProduct);
     }
 
+    public void addElectronicProduct(ElectronicProduct electronicProduct) {
+        this.products.add(electronicProduct);
+    }
+
     public void addClothingProduct(String name, Double price, ClothingProduct.SubCategory subCategory, int quantity, int percentage) {
         ClothingProduct clothingProduct = new ClothingProduct(name, price, subCategory, quantity, percentage);
+        this.products.add(clothingProduct);
+    }
+
+    public void addClothingProduct(ClothingProduct clothingProduct) {
         this.products.add(clothingProduct);
     }
 
@@ -62,9 +70,9 @@ public class Store {
         }
     }
 
-
     public void removeProduct(String id) {
         this.products.remove(getProduct(id));
+        Main.storage.storeData();
     }
 
     public void removeProducts(ArrayList<Product> products) {
