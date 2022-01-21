@@ -134,6 +134,7 @@ public class HomeController {
                 }
             }
         });
+
         logOut.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

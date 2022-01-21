@@ -27,7 +27,7 @@ public class Main extends Application {
         screenController.addScreen("home", "ui/home.fxml");
         screenController.addScreen("cart", "ui/cart.fxml");
         screenController.addScreen("admin", "ui/admin.fxml");
-        primaryStage.setTitle("UAP Store");
+        primaryStage.setTitle("UAP Bazar");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

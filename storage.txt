@@ -1,1 +1,1 @@
-Food|037898|Burger|135.0|5|10|2021-05-21|Snacks|~Electronic|531631|Walton AC|44000.0|5|12|Ac|~Clothing|008408|Shirt|425.0|46|15|TShirt|~
+Food|722684|Burger|88.57|-4|10|2021-05-21|Snacks|~Clothing|204128|Shirt|221.85|28|15|TShirt|~Food|593404|Pizza|182.25|3|10|2021-05-22|Snacks|~

@@ -159,9 +159,16 @@ public class CartController {
             }
         });
 
-        buyNowButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+//        buyNowButton.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                buyNow();
+//            }
+//        });
+        //lamda expression
+
+        buyNowButton.setOnAction(e ->{
+           {
                 buyNow();
             }
         });
