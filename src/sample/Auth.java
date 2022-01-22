@@ -7,7 +7,7 @@ public class Auth {
     public boolean isLoggedIn = false;
 
     public void logIn(String email, String password) throws IOException {
-        if (email.equals("user@gmail.com") && password.equals("1234")) {
+        if (email.equals("user@gmail.com") && password.equals("user")) {
             isAdminUser = false;
             isLoggedIn = true;
             Main.screenController.activate("home");
